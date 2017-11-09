@@ -1,4 +1,4 @@
 # Checkers
-Play Checkers game with huamn and robts.
+Play Checkers game with human and robots.
 
 developed by Xuesj @ 2017/11
