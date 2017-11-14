@@ -1,10 +1,10 @@
 # -*- coding: UTF-8 -*-
 from checkers.player import HumanPlayer, RandomPlayer
-from checkers.board import GameBoard
+from checkers.board import Board
 
-game_board = GameBoard(3)
-game_board.move(0, 0, GameBoard.BLACK)
-game_board.move(0, 1, GameBoard.WHITE)
+game_board = Board(3)
+game_board.move(0, 0, Board.BLACK)
+game_board.move(0, 1, Board.WHITE)
 
 name = 'James'
 a_player = HumanPlayer(name)

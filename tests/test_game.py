@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from checkers.board import GameBoard
+from checkers.board import Board
 from checkers.player import HumanPlayer, RandomPlayer
 from checkers.game import Game
 

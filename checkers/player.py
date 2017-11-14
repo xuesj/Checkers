@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from checkers.board import GameBoard
+from checkers.board import Board
 import random
 
 
@@ -31,6 +31,7 @@ class HumanPlayer(Player):
         :param value: GameBoard.WHITE or GameBoard.BLACK
         :return: i, j
         """
+        board.print_board()
         move_str = input('x, y: ')
         i, j = map(lambda x: int(x.strip()), move_str.split(','))
         assert i in range(board.width)
@@ -56,9 +57,9 @@ class RandomPlayer(Player):
 
 
 if __name__ == '__main__':
-    game_board = GameBoard(3)
-    game_board.move(0, 0, GameBoard.BLACK)
-    game_board.move(0, 1, GameBoard.WHITE)
+    game_board = Board(3)
+    game_board.move(0, 0, Board.BLACK)
+    game_board.move(0, 1, Board.WHITE)
 
     name = 'James'
     a_player = HumanPlayer(name)

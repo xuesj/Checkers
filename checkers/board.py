@@ -3,7 +3,7 @@
 import numpy as np
 
 
-class GameBoard(object):
+class Board(object):
     """Define the board of game."""
     WHITE = 1
     BLACK = -1
@@ -22,11 +22,11 @@ class GameBoard(object):
 
     def check_state(self):
         """board is dict of positon of white and black"""
-        if self.check_value(GameBoard.WHITE):
-            return GameBoard.WHITE
+        if self.check_value(Board.WHITE):
+            return Board.WHITE
 
-        if self.check_value(GameBoard.BLACK):
-            return GameBoard.BLACK
+        if self.check_value(Board.BLACK):
+            return Board.BLACK
 
         return None
 
@@ -42,7 +42,7 @@ class GameBoard(object):
         if all(self._field[i, i] == value for i in range(self._x)):
             return True
 
-        if all(self._field[i, self._x - 1 - i] for i in range(self._x)):
+        if all(self._field[i, self._x - 1 - i] == value for i in range(self._x)):
             return True
 
         return False
@@ -51,7 +51,7 @@ class GameBoard(object):
         assert i in range(self._x)
         assert j in range(self._x)
         assert self._field[i, j] == 0
-        assert value is GameBoard.WHITE or value is GameBoard.BLACK
+        assert value is Board.WHITE or value is Board.BLACK
         self._field[i, j] = value
 
     def remove(self, i, j):
@@ -68,14 +68,17 @@ class GameBoard(object):
                            for j in range(self._x)
                            if self._field[i, j] == 0])
 
+    def print_board(self):
+        print(self._field)
+
 
 if __name__ == '__main__':
-    game_board = GameBoard(3)
-    game_board.remove_all()
-    game_board.move(2, 0, GameBoard.BLACK)
-    game_board.move(0, 2, GameBoard.WHITE)
-    game_board.move(1, 2, GameBoard.BLACK)
-    game_board.move(2, 1, GameBoard.WHITE)
-    game_board.move(0, 0, GameBoard.BLACK)
-    game_board.move(1, 1, GameBoard.WHITE)
-    assert game_board.check_state() != GameBoard.WHITE
+    board = Board(3)
+    board.remove_all()
+    board.move(2, 0, Board.BLACK)
+    board.move(0, 2, Board.WHITE)
+    board.move(1, 2, Board.BLACK)
+    board.move(2, 1, Board.WHITE)
+    board.move(0, 0, Board.BLACK)
+    board.move(1, 1, Board.WHITE)
+    assert board.check_state() != Board.WHITE
